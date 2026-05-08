@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     {
         // Handle player movement input
         float moveInput = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+        rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
 
         // Check if the player is grounded using a circle overlap check
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
         // Apply jump force in FixedUpdate to ensure consistent physics behavior
         if (isJumping)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             isJumping = false;  // Reset the jumping flag
         }
     }
